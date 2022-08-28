@@ -1,0 +1,52 @@
+CREATE TABLE categorias (
+	id serial PRIMARY KEY,
+	descategoria TEXT ,
+	fecha DATE 
+)
+
+
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Hogar y decoración', to_date('12/12/2012', 'DD/MM/YYYY'));
+    
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Moda', to_date('12/12/2012', 'DD/MM/YYYY'));    
+
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Accesorios', to_date('12/12/2024', 'DD/MM/YYYY'));
+    
+    
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Juguetes', to_date('12/12/2024', 'DD/MM/YYYY'));
+    
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Recuerdos y regalos corporativos', to_date('11/11/2011', 'DD/MM/YYYY'));    
+
+INSERT INTO public.categorias(
+	descategoria, fecha)
+	VALUES ('Piezas de colección', to_date('11/11/2011', 'DD/MM/YYYY'));
+
+
+SELECT * FROM categorias
+
+= Json.Document(Web.Contents("https://localhost:5001/api/Categorias/inicio=2012-12-21/final=2012-12-30"))
+= Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+= Table.RenameColumns(#"Personalizado1",{{"Column1", "categorias"}})
+= Table.ExpandRecordColumn(#"Personalizado2", "categorias", {"id", "desCategoria", "fecha"})
+
+
+let
+    
+    Origen = Json.Document(Web.Contents(
+        Text.Combine({"https://localhost:5001/api/Categorias/inicio="
+            &Text.Start(DateTime.ToText(Excel.CurrentWorkbook(){[Name="start"]}[Content]{0}[Column1], [Format="dd-MM-yyyy'T'HH:mm:ss'Z'", Culture="en-US"]), 10), "/final="})
+    &Text.Start(DateTime.ToText(Excel.CurrentWorkbook(){[Name="end"]}[Content]{0}[Column1], [Format="dd-MM-yyyy'T'HH:mm:ss'Z'", Culture="en-US"]), 10))),
+    Personalizado1 = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    Personalizado2 = Table.RenameColumns(#"Personalizado1",{{"Column1", "categorias"}}),
+    Personalizado3 = Table.ExpandRecordColumn(#"Personalizado2", "categorias", {"id", "desCategoria", "fecha"})
+in
+    Personalizado3
