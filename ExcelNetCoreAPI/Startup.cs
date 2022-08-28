@@ -1,4 +1,10 @@
 using ExcelNetCoreAPI.Domain;
+using ExcelNetCoreAPI.Domain.ArtesanosDomain;
+using ExcelNetCoreAPI.Domain.PersonasDomain;
+using ExcelNetCoreAPI.Domain.ProductosDomain;
+using ExcelNetCoreAPI.Domain.RedesSocialesArtesanosDomain;
+using ExcelNetCoreAPI.Domain.SubcategoriasDomain;
+using ExcelNetCoreAPI.Domain.UsuariosDomain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,15 +29,19 @@ namespace ExcelNetCoreAPI
             var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection"));
             services.AddSingleton(postgreSQLConnectionConfiguration);
             services.AddScoped<ICategoriasRepository, CategoriasRepository>();
+            services.AddScoped<ISubCategoriasRepository, SubCategoriasRepository>();
+            services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+            services.AddScoped<IPersonasRepository, PersonasRepository>();
+            services.AddScoped<IArtesanosRepository, ArtesanosRepository>();
+            services.AddScoped<IRedesSocialesArtesanosRepository, RedesSocialesArtesanosRepository>();
+            services.AddScoped<IProductosRepository, ProductosRepository>();
 
-
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExcelNetCoreAPI", Version = "v1" });
             });
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

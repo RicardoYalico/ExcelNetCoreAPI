@@ -7,7 +7,7 @@ namespace ExcelNetCoreAPI.Domain
 {
     public class Categorias
     {
-        public int id { get; set; }
+        public long Idcategoria { get; set; }
         public string DesCategoria { get; set; }
         public DateTime Fecha { get; set; }
     }

@@ -33,7 +33,7 @@ namespace ExcelNetCoreAPI.Domain
         {
             var db = dbConnection();
             var sql = @" 
-                        SELECT id, descategoria, fecha 
+                        SELECT idcategoria, descategoria, fecha 
                         FROM public.categorias
                         WHERE fecha BETWEEN @FirstDate and  @SecondDate";
             return await db.QueryAsync<Categorias>(sql, new { FirstDate = firstDate, SecondDate = secondDate });

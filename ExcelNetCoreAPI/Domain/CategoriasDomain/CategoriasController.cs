@@ -27,6 +27,6 @@ namespace ExcelNetCoreAPI.Controllers
         public async Task<IActionResult> GetDateInRange(string start, string end)
         {
             return Ok(await _categoriasRepository.GetByDateRange(DateTime.Parse(start), DateTime.Parse(end)));
-        }
+        }   
     }
 }
