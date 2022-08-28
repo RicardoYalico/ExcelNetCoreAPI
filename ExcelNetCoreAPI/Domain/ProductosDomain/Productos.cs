@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ExcelNetCoreAPI.Domain.ProductosDomain
 {
     public class Productos
     {
-        public long Idartesano { get; set; }
+        public long IdArtesano { get; set; }
         public long IdItem { get; set; }
         public long IdCategoria { get; set; }
         public string DesCategoria { get; set; }
-        public long IdSubcategoria { get; set; }
-        public string DesSubcategoria { get; set; }
+        public long IdSubCategoria { get; set; }
+        public string DesSubCategoria { get; set; }
         public long IdSublinea { get; set; }
         public string DesSublinea { get; set; }
         public string DesProducto { get; set; }

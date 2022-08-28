@@ -1,0 +1,203 @@
+=EXTRAE(Usuarios[[#Encabezados];[Usuarios.IdUsuario]];10;LARGO(Usuarios[[#Encabezados];[Usuarios.IdUsuario]]))
+
+=CONCAT("INSERT INTO public.usuarios(";$A$27;", ";$B$27;",";$C$27;",";$D$27;", ";$E$27;",";$F$27;",";$G$27;",";$H$27;",";$I$27;",";$J$27;",";$K$27;",";$L$27;",";$M$27;") VALUES (";Usuarios[@[Usuarios.IdUsuario]];", '";Usuarios[@[Usuarios.TipUsuario]];"','";Usuarios[@[Usuarios.DesNombre]];"','";Usuarios[@[Usuarios.Correo]];"','";Usuarios[@[Usuarios.Sexo]];"',";Usuarios[@[Usuarios.Edad]];",";Usuarios[@[Usuarios.AnioNac]];",";Usuarios[@[Usuarios.MesNac]];",";Usuarios[@[Usuarios.DiaNac]];",";Usuarios[@[Usuarios.AnioCrea]];",";Usuarios[@[Usuarios.MesCrea]];",";Usuarios[@[Usuarios.DiaCrea]];", to_date( '";TEXTO(Usuarios[@[Usuarios.Fecha]]; "dd/mm/yyyy");"', 'DD/MM/YYYY'));")
+
+
+CREATE TABLE categorias (
+	idcategoria BIGINT,
+	descategoria TEXT ,
+	fecha DATE 
+)
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (1, 'Hogar y decoración', to_date( '24/11/2022', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (2, 'Moda', to_date( '08/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (3, 'Accesorios', to_date( '23/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (4, 'Juguetes', to_date( '15/09/2022', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (5, 'Recuerdos y regalos corporativos', to_date( '10/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (6, 'Piezas de colección', to_date( '15/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.categorias( idCategoria, descategoria, fecha) VALUES (7, 'Servicios', to_date( '20/07/2021', 'DD/MM/YYYY'));
+
+
+
+CREATE TABLE subcategorias (
+	idsubcategoria BIGINT,
+	dessubcategoria TEXT ,
+	fecha DATE 
+);
+
+INSERT INTO public.subcategorias( idSubCategoria, desSubCategoria, fecha) VALUES (1, 'Alfarería y cerámica  ', to_date( '24/01/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (2, 'Bisutería', to_date( '15/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (3, 'Cerería', to_date( '28/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (4, 'Cueros y pieles', to_date( '30/09/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (5, 'Fibras vegetales ', to_date( '10/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (6, 'Imaginería', to_date( '12/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (7, 'Instrumentos musicales ', to_date( '27/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (8, 'Joyería y orfebrería', to_date( '15/01/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (9, 'Resinas', to_date( '30/12/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (10, 'Máscaras', to_date( '17/05/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (11, 'Mates y huingos', to_date( '20/02/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (12, 'Metalistería', to_date( '26/10/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (13, 'Papel', to_date( '30/04/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (14, 'Pintura', to_date( '09/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (15, 'Recurso acuícola', to_date( '25/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (16, 'Sombreros, monteras y coronas ', to_date( '19/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (17, 'Talla', to_date( '10/02/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (18, 'Textilería', to_date( '03/03/2021', 'DD/MM/YYYY'));
+INSERT INTO public.subcategorias( idSubCategoria, desSubcategoria, fecha) VALUES (19, 'Vidrio', to_date( '08/05/2022', 'DD/MM/YYYY'));
+
+CREATE TABLE usuarios(
+	idusuario BIGINT,
+	TipUsuario TEXT ,
+	DesNombre TEXT,
+	Correo TEXT,
+	Sexo TEXT,
+	Edad INT,
+	AnioNac BIGINT,
+	MesNac INT,
+	DiaNac INT,
+	AnioCrea INT,
+	MesCrea INT,
+	DiaCrea INT,
+	Fecha DATE 
+);
+
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3197, 'INSCRITO','YANELLY LARA VALLE','yanellylv@gmail.com','MUJER',36,1986,6,11,2020,9,9, to_date( '04/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3200, 'INSCRITO','Peter Ccopa Peralta','peterccp85@gmail.com','HOMBRE',1,2020,9,20,2020,9,20, to_date( '19/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3201, 'INSCRITO','John Ccopa Peralta','peter@gmail.com','',95,1927,9,6,2020,9,20, to_date( '27/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3203, 'INSCRITO','John Ccopa Peralta','peter@gmail.com','',37,1985,3,22,2020,9,20, to_date( '02/11/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3207, 'INSCRITO','Peter Ccopa ','peterccp85@gmail.com','',37,1985,3,22,2020,9,23, to_date( '24/04/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3208, 'INSCRITO','Peter Ccopa ','peterccp85@gmail.com','',37,1985,3,22,2020,9,23, to_date( '30/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3206, 'INSCRITO','Peter Ccopa Peralta','peter@gmail.com','',1,2020,9,2,2020,9,21, to_date( '07/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3210, 'INSCRITO','Peter Ccopa ','peter2@gmail.com','',37,1985,3,22,2020,9,23, to_date( '10/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3214, 'INSCRITO','Pruebita2 Pruebita2 Pruebita2','pruebita2@hotmail.com','',25,1997,8,17,2020,9,30, to_date( '28/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3215, 'INSCRITO','Pruebita3 Pruebita3 Pruebita3','pruebita2@hotmail.com','',25,1997,8,17,2020,9,30, to_date( '01/10/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3198, 'INSCRITO','PETER CCOPA PERALTA','PETERCCP85@GMAIL.COM','HOMBRE',1,2020,9,20,2020,9,20, to_date( '29/05/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3202, 'INSCRITO','Peter Ccopa Peralta','peterccp85@gmail.com','HOMBRE',37,1985,3,22,2020,9,20, to_date( '10/09/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3205, 'INSCRITO','Peter Ccopa Peralta','peter@gmail.com','',1,2020,9,21,2020,9,21, to_date( '01/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3213, 'INSCRITO','Pruebita1 Pruebita1 Pruebita1','pruebita1@gmail.com','',24,1997,9,17,2020,9,28, to_date( '24/01/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3216, 'INSCRITO','Pruebita4 Pruebita4 Pruebita4','pruebita4@hotmail.com','',25,1997,8,17,2020,9,30, to_date( '24/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3199, 'INSCRITO','PETER CCOPA PERALTA','PETERCCP85@GMAIL.COM','HOMBRE',1,2020,9,20,2020,9,20, to_date( '30/04/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3204, 'INSCRITO','Peter Ccopa Peralta','peter@gmail.com','',37,1985,3,22,2020,9,20, to_date( '05/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3211, 'INSCRITO','Mitchell Espinoza Mayta','leoneles84@hotmail.com','',37,1985,7,23,2020,9,28, to_date( '02/02/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3212, 'INSCRITO','Alexander Quispe Talavera','alexander.quispe.17@gmail.com','',25,1997,8,17,2020,9,28, to_date( '07/04/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3209, 'INSCRITO','Peter Ccopa ','peter1@gmail.com','',37,1985,3,22,2020,9,23, to_date( '08/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3217, 'INSCRITO','Ofelia Escriba ','ofeliaesga@gmail.com','',37,1984,10,18,2020,10,5, to_date( '15/01/2021', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3218, 'INSCRITO','Christie Malca ','christie.malca@gmail.com','',33,1989,7,28,2020,10,5, to_date( '03/04/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3220, 'INSCRITO','Felipe Carnon French','felipefre@gmail.com','HOMBRE',20,2002,3,24,2022,7,31, to_date( '22/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.usuarios(IdUsuario, TipUsuario,DesNombre,Correo, Sexo,Edad,AnioNac,MesNac,DiaNac,AnioCrea,MesCrea,DiaCrea,Fecha) VALUES (3219, 'INSCRITO','Juan Romero Nuñez ','jmaromero99@yahoo.com','',0,0,0,0,2022,7,28, to_date( '12/05/2022', 'DD/MM/YYYY'));
+
+CREATE TABLE personas(
+	idpersona BIGINT,
+	tipcontrib TEXT ,
+	nroruc TEXT,
+	desnombre TEXT,
+	tippersona TEXT,
+	Fecha DATE 
+);
+
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (3057, 'N','10427408286','ESCRIBA GARIBAY, OFELIA','NATURAL', to_date( '12/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10601, 'N','10030819735','GUERRERO SAAVEDRA, PATROCINIA','NATURAL', to_date( '22/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (19455, 'N','10297394181','TORRES GUILLEN, ARINDA CARLINA','NATURAL', to_date( '16/12/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (39301, 'N','10092702494','RAMOS SOSA, ORLANDO','NATURAL', to_date( '29/04/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10984, 'N','10178068992','ZEVALLOS VILLANUEVA, ANTONIETA SILVIA','NATURAL', to_date( '13/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10594, 'N','10027015978','CHERO FLORES, ALBERTO CAYETANO','NATURAL', to_date( '05/03/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10599, 'N','10031231057','NEIRA DE SARANGO, MARIA','NATURAL', to_date( '04/02/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (3197, 'N','10436392180','LARA VALLE, YANELLY ZENAYDA','NATURAL', to_date( '13/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11003, 'N','10027992957','YARLEQUE ESPINOZA, VICTOR HUGO','NATURAL', to_date( '25/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10994, 'N','10093476510','PADILLA PARIONA, YURI FRANCISCO','NATURAL', to_date( '21/01/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (27902, 'N','10027999528','ZAPATA  ESTRADA, PEDRO NOLASCO','NATURAL', to_date( '29/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11000, 'N','10033575888','PAZ JUAREZ, SANTODIO','NATURAL', to_date( '24/03/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40131, 'J','20494468451','ARTE TEXTIL FORTALEZA SAC','JURIDICA', to_date( '04/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10575, 'N','10439442510','BRUNO IMAN, MAGALI ESPERANZA','NATURAL', to_date( '01/09/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10998, 'N','10027057115','VALDIVIEZO BRICEÑO, PABLO ERNESTO','NATURAL', to_date( '22/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10995, 'N','10028128318','YARLEQUE DURAN, EDUARDO','NATURAL', to_date( '01/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40841, 'J','20602322298','ASOCIACION NACIONAL DE ARTISTAS ORFEBRES Y JOYEROS DEL PERU','JURIDICA', to_date( '25/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10590, 'N','10412046299','YARLEQUE MEZONES, ANTONINO','NATURAL', to_date( '29/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10993, 'N','10282356151','MALLQUI VENTURA, FIDEL','NATURAL', to_date( '12/08/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40096, 'J','20525249973','JOYAS TALLAN S.C.R.L','JURIDICA', to_date( '06/01/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40098, 'J','20517828522','SOMOS INCA EIRL','JURIDICA', to_date( '08/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10591, 'N','10027019931','MANRIQUE ROJAS, MARCELINO','NATURAL', to_date( '24/07/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10570, 'N','10254150237','ZAPATA PRECIADO, LUZ AMELIA','NATURAL', to_date( '23/06/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10596, 'N','10028832627','BARRIENTOS OJEDA, NICOLAS','NATURAL', to_date( '13/09/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10574, 'N','10431900713','MARQUEZ ELIAS, MARIA DEXI','NATURAL', to_date( '05/06/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10597, 'N','10030991091','CALLE CASTILLO, ELVIA','NATURAL', to_date( '19/06/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10600, 'N','10031273302','HUAMAN LLOCLLA, RAMONA','NATURAL', to_date( '28/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40798, 'J','20178190971','ASOCIACION DE ARTESANOS DE CATACAOS','JURIDICA', to_date( '04/04/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (55759, 'N','10410881182','ALBERCA GUEVARA, FLOR MIRIAM','NATURAL', to_date( '03/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11004, 'N','10027033879','SERNAQUE LALUPU, MANUEL JESUS','NATURAL', to_date( '28/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10579, 'N','10033012301','CASTILLO DE ELIAS, EDELMIRA','NATURAL', to_date( '29/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11002, 'N','10021503555','COAQUIRA ROJAS, LAUREANA','NATURAL', to_date( '11/05/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10580, 'N','10804370311','CHUNGA FLORES, HIPOLITA','NATURAL', to_date( '19/01/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (50451, 'N','10404514381','JAICO HUAYANAY, NOEMI','NATURAL', to_date( '26/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11418, 'N','10282123920','TIPE DE LICAS, ROSA','NATURAL', to_date( '27/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10595, 'N','10033125181','GONZALES CARMEN, CONCEPCION','NATURAL', to_date( '12/08/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10985, 'N','10073581031','CONTRERAS CANGRE, JUAN ALCIBIADES','NATURAL', to_date( '29/11/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (40140, 'J','20510165218','EL VIRREY & CIA S.A.C.','JURIDICA', to_date( '09/03/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10999, 'N','10027051150','GARCIA ESPINOZA, JOSE SANTOS','NATURAL', to_date( '27/10/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (39300, 'N','10199967849','TAIPE QUISPE, MARIA ANTONIETA','NATURAL', to_date( '18/11/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10593, 'N','10028263762','RAMOS FERNANDEZ, VICTOR RAUL','NATURAL', to_date( '05/11/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11001, 'N','10033694470','SUYON PAZ, ALEJANDRO','NATURAL', to_date( '22/12/2021', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10573, 'N','10430678723','ADANAQUE MARQUEZ, YOHANA DEL PILAR','NATURAL', to_date( '02/10/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (10577, 'N','10804369151','CHIROQUE ALAMA, AUDELIA','NATURAL', to_date( '09/07/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11005, 'N','10021507496','MAMANI CHARCA, BUENAVENTURA','NATURAL', to_date( '23/09/2022', 'DD/MM/YYYY'));
+INSERT INTO public.personas(IdPersona, TipContrib,NroRuc,DesNombre, TipPersona,Fecha) VALUES (11423, 'N','10404862541','QUISPE VELARDE, MARIA DOLORES','NATURAL', to_date( '01/09/2021', 'DD/MM/YYYY'));
+
+CREATE TABLE artesanos (
+	IdArtesano BIGINT,
+	IdPersona BIGINT,
+DesPersona TEXT ,
+IndItems TEXT ,
+IndActivo TEXT ,
+DesDepa TEXT ,
+DesProv TEXT ,
+DesDist TEXT ,
+CodUbigeoAsumido BIGINT ,
+AnioCrea BIGINT ,
+MesCrea INT ,
+DiaCrea INT ,
+	Fecha DATE
+);
+
+INSERT INTO public.artesanos(
+	IdArtesano , IdPersona, DesPersona, IndItems, IndActivo, DesDepa, DesProv,DesDist, CodUbigeoAsumido, AnioCrea, MesCrea, DiaCrea, Fecha)
+	VALUES (51, 55759, 'ALBERCA GUEVARA, FLOR MIRIAM', 'NO', 'NO', 'LIMA', 'LIMA','LIMA',  150101, 2020, 9, 16, to_date( '01/09/2021', 'DD/MM/YYYY'));
+
+
+
+CREATE TABLE redessocialesartesanos (
+	idartesano BIGINT,
+	IdRedSocial BIGINT,
+DesPersona TEXT ,
+DesRedSocial TEXT ,
+IdPersona BIGINT,
+	Fecha DATE
+);
+
+
+INSERT INTO public.redessocialesartesanos(
+	idartesano, idredsocial, despersona, desredsocial, idpersona, fecha)
+	VALUES (1, 1, 'TAIPE QUISPE, MARIA ANTONIETA', 'Facebook', 39300, to_date( '01/09/2021', 'DD/MM/YYYY'));
+
+1-9-2021
+
+
+CREATE TABLE productos(
+	Idartesano BIGINT,
+	IdItem BIGINT,
+IdCategoria BIGINT,
+DesCategoria TEXT ,
+IdSubcategoria BIGINT,
+DesSubcategoria TEXT ,
+IdSublinea BIGINT,
+DesSublinea TEXT ,
+DesProducto TEXT ,
+NumPrec FLOAT,
+TipProducto TEXT ,
+AnioCrea BIGINT,
+MesCrea INT,
+DiaCrea INT,
+	Fecha DATE
+);
+
+INSERT INTO public.productos(
+	idartesano, iditem, idcategoria, descategoria, idsubcategoria, dessubcategoria, idsublinea, dessublinea, desproducto, numprec, tipproducto, aniocrea, mescrea, diacrea, fecha)
+	VALUES (1, 1, 1, 'Hogar y decoración', 1, 'Alfarería y cerámica  ', 1, 'Alfarería o loza porosa', 'Ceramica floral', 300, 'SERVICIO', 2020, 10, 10, to_date( '01/09/2021', 'DD/MM/YYYY'))

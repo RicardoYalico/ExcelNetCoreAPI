@@ -26,9 +26,8 @@ namespace ExcelNetCoreAPI.Domain.ArtesanosDomain
         {
             var db = dbConnection();
             var sql = @" 
-                        SELECT idartesano , IdPersona , DesPersona , IndItems , IndActivo , 
-                        DesDepa, DesProv  , CodUbigeoAsumido  ,AnioCrea  ,MesCrea  ,DiaCrea   ,Fecha
-                        FROM public.artesanos
+                        SELECT idartesano, idpersona, despersona, inditems, indactivo, desdepa, desprov, desdist, codubigeoasumido, aniocrea, mescrea, diacrea, fecha
+	                    FROM public.artesanos
                         WHERE fecha BETWEEN @FirstDate and  @SecondDate";
             return await db.QueryAsync<Artesanos>(sql, new { FirstDate = firstDate, SecondDate = secondDate });
         }

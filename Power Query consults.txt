@@ -1,0 +1,60 @@
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepProducto/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "Producto"}}),
+    #"Se expandió Producto" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "Producto", {"IdArtesano", "IdItem", "IdCategoria", "DesCategoria", "IdSubcategoria", "DesSubcategoria", "IdSublinea", "DesSublinea", "DesProducto", "NumPrec", "TipProducto", "AnioCrea", "MesCrea", "DiaCrea"}, {"Producto.IdArtesano", "Producto.IdItem", "Producto.IdCategoria", "Producto.DesCategoria", "Producto.IdSubcategoria", "Producto.DesSubcategoria", "Producto.IdSublinea", "Producto.DesSublinea", "Producto.DesProducto", "Producto.NumPrec", "Producto.TipProducto", "Producto.AnioCrea", "Producto.MesCrea", "Producto.DiaCrea"})
+in
+    #"Se expandió Producto"
+
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepPersona/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "Personas"}}),
+    #"Se expandió Personas" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "Personas", {"IdPersona", "TipContrib", "NroRuc", "DesNombre", "TipPersona"}, {"Personas.IdPersona", "Personas.TipContrib", "Personas.NroRuc", "Personas.DesNombre", "Personas.TipPersona"})
+in
+    #"Se expandió Personas"
+
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepArtesano/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "Artesano"}}),
+    #"Se expandió Artesano" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "Artesano", {"IdArtesano", "IdPersona","DesPersona", "IndItems", "IndActivo", "DesDepa", "DesProv", "DesDist", "CodUbigeoAsumido", "AnioCrea", "MesCrea", "DiaCrea"}, {"Artesano.IdArtesano", "Artesano.IdPersona", "Artesano.DesPersona", "Artesano.IndItems", "Artesano.IndActivo", "Artesano.DesDepa", "Artesano.DesProv", "Artesano.DesDist", "Artesano.CodUbigeoAsumido", "Artesano.AnioCrea", "Artesano.MesCrea", "Artesano.DiaCrea"})
+in
+    #"Se expandió Artesano"
+
+
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepArtesanoRed/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "RedesSocialesArtesanos"}}),
+    #"Se expandió RedesSocialesArtesanos" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "RedesSocialesArtesanos", {"IdArtesano", "IdRedSocial", "DesPersona", "DesRedSocial", "IdPersona"}, {"RedesSocialesArtesanos.IdArtesano", "RedesSocialesArtesanos.IdRedSocial", "RedesSocialesArtesanos.DesPersona", "RedesSocialesArtesanos.DesRedSocial", "RedesSocialesArtesanos.IdPersona"})
+in
+    #"Se expandió RedesSocialesArtesanos"
+
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepSubcategoria/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "Subcategorias"}}),
+    #"Se expandió Subcategorias" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "Subcategorias", {"IdSubcategoria", "DesSubcategoria"}, {"Subcategorias.IdSubcategoria", "Subcategorias.DesSubcategoria"})
+in
+    #"Se expandió Subcategorias"
+
+let
+    Origen = Json.Document(Web.Contents("https://localhost:44356/api/RepUsuario/consulta")),
+    #"Convertida en tabla" = Table.FromList(Origen, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Convertida en tabla",{{"Column1", "Usuarios"}}),
+    #"Se expandió Usuarios" = Table.ExpandRecordColumn(#"Columnas con nombre cambiado", "Usuarios", {"IdUsuario", "TipUsuario", "DesNombre", "Correo", "Sexo", "Edad", "AnioNac", "MesNac", "DiaNac", "AnioCrea", "MesCrea", "DiaCrea"}, {"Usuarios.IdUsuario", "Usuarios.TipUsuario", "Usuarios.DesNombre", "Usuarios.Correo", "Usuarios.Sexo", "Usuarios.Edad", "Usuarios.AnioNac", "Usuarios.MesNac", "Usuarios.DiaNac", "Usuarios.AnioCrea", "Usuarios.MesCrea", "Usuarios.DiaCrea"})
+in
+    #"Se expandió Usuarios"
+
+
+
+
+
+
+
+
+
+
+
+

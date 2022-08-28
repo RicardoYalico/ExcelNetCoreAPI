@@ -1,5 +1,5 @@
 CREATE TABLE categorias (
-	id serial PRIMARY KEY,
+	idcategoria serial PRIMARY KEY,
 	descategoria TEXT ,
 	fecha DATE 
 )

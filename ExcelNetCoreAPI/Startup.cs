@@ -26,6 +26,7 @@ namespace ExcelNetCoreAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection"));
             services.AddSingleton(postgreSQLConnectionConfiguration);
             services.AddScoped<ICategoriasRepository, CategoriasRepository>();
@@ -36,7 +37,6 @@ namespace ExcelNetCoreAPI
             services.AddScoped<IRedesSocialesArtesanosRepository, RedesSocialesArtesanosRepository>();
             services.AddScoped<IProductosRepository, ProductosRepository>();
 
-            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
